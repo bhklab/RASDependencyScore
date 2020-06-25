@@ -7,7 +7,7 @@
  * How to define PDAC-dependent or -independent tumors?
    - Mottini and collegues reimplemented to calculate KRAS dependency scores (S- and L-scores) from two lists of genes below and filtered in meaningful and measurable genes such as protein-coding genes, resulting in a total of 119 and 146 genes, respectively.
    - S-score: [Singh et al. (PMID: 19477428)](./references/19477428.pdf) introduced RAS dependency signature genes ([_N_=325](./references/19477428_Supple.pdf)) and a RAS dependency scoring method.
-   - L-score: [Loboda et al. (PMID: 20591134)](./references/20591134.pdf) introduced RAS pathway-related genes ([_N_=147](./20591134_Supple.xls)) and a RAS signature scoring method. (_RFPL3S_ (RNA gene) was excluded in the L-scoring method).
+   - L-score: [Loboda et al. (PMID: 20591134)](./references/20591134.pdf) introduced RAS pathway-related genes ([_N_=147](./20591134_Supple.xls)) and a RAS signature scoring method. (_RFPL3S_ [RNA gene] was excluded in the L-scoring method).
 
 ## KRAS dependency score
  * Syponsis
