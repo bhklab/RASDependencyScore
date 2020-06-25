@@ -5,13 +5,13 @@
    - Decitabine showed antitumor activity against PDAC-dependent tumors.
    - Decitabine + trametinib (MEKi) had significant synergistic effects in PDAC-dependent tumors.
  * How to define PDAC-dependent or -independent tumors?
-   - Mottini and collegues reimplemented to calculate KRAS dependency scores (S- and L-scores) from two lists of genes below and filtered in meaningful and measurable genes such as protein-coding genes, resulting in a total of 119 and 146 genes, respectively.
+   - Mottini and collegues reimplemented the method previously proposed to calculate KRAS dependency scores (S- and L-scores) from two lists of genes below and filtered for meaningful and measurable genes such as protein-coding genes, resulting in a total of 119 and 146 genes, respectively.
    - S-score: [Singh et al. (PMID: 19477428)](./references/19477428.pdf) introduced RAS dependency signature genes ([_N_=325](./references/19477428_Supple.pdf)) and a RAS dependency scoring method.
    - L-score: [Loboda et al. (PMID: 20591134)](./references/20591134.pdf) introduced RAS pathway-related genes ([_N_=147](./20591134_Supple.xls)) and a RAS signature scoring method. (_RFPL3S_ [RNA gene] was excluded in the L-scoring method).
 
 ## KRAS dependency score
- * Syponsis
-   - The top KRAS-dependent genes were selected as **"up"** genes, and the top KRAS-independent genes were selected as **"down"** genes.
+ * Synopsis
+   - The top KRAS-dependent genes were selected as **up**-regulated genes, and the top KRAS-independent genes were selected as **down**-regulated genes.
    - The KRAS signature scores are calculated by subtracting the average normalized expression of "down" genes from the average normalized expression of "up" genes.
  * S-score
    - **UP-genes** (_N_=79): _ACTR3C_, _ANKRD22_, _ATP2C2_, _B3GNT3_, _BSPRY_, _C11orf52_, _C1orf106_, _C1orf116_, _C1orf172_, _C1orf210_,  
@@ -45,14 +45,14 @@ _SMAD9_, _STARD7_, _SUGP1_, _TBC1D24_, _TMEFF1_, _TTC28_, _ZNF292_, _ZNF441_, _Z
 _ZNF672_
 
 ## Datasets
- * Celllines
-   - CCLE (ORCESTRA URL)
-   - GDSC2
-   - gCSI
+ * Celllines (ORCESTRA)
+   - CCLE (https://doi.org/10.5281/zenodo.3905462)
+   - GDSC2 (https://doi.org/10.5281/zenodo.3905481)
+   - gCSI (https://doi.org/10.5281/zenodo.3905452)
  * Organoids
-   - Living Biobank (Gemcitabine + Trametinib)
+   - Pricess Margaret Living Biobank (Gemcitabine + Trametinib, https://www.livingbiobank.ca/)
  * Patient cohorts
-   - PCSI (resected cases)
+   - PCSI (resected cases, https://doi.org/10.18129/B9.bioc.MetaGxPancreas)
    - COMPASS (advanced, prospective cohort)
 
 
