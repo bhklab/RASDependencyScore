@@ -47,10 +47,10 @@ _ZNF672_
 ## Datasets
  * Celllines (ORCESTRA)
    - CCLE (https://doi.org/10.5281/zenodo.3905462)
+   - CTRPv2 (https://doi.org/10.5281/zenodo.3905470)
    - GDSC2 (https://doi.org/10.5281/zenodo.3905481)
-   - gCSI (https://doi.org/10.5281/zenodo.3905452)
  * Organoids
-   - Pricess Margaret Living Biobank (Gemcitabine + Trametinib, https://www.livingbiobank.ca/)
+   - Pricess Margaret Living Biobank (Trametinib/Gemcitabine, https://www.livingbiobank.ca/)
  * Patient cohorts
    - PCSI (resected cases, https://doi.org/10.18129/B9.bioc.MetaGxPancreas)
    - COMPASS (advanced, prospective cohort)
