@@ -45,7 +45,7 @@ _SMAD9_, _STARD7_, _SUGP1_, _TBC1D24_, _TMEFF1_, _TTC28_, _ZNF292_, _ZNF441_, _Z
 _ZNF672_
 
 ## Datasets
- * Celllines (ORCESTRA)
+ * Celllines (https://ORCESTRA.ca)
    - CCLE (https://doi.org/10.5281/zenodo.3905462)
    - CTRPv2 (https://doi.org/10.5281/zenodo.3905470)
    - GDSC2 (https://doi.org/10.5281/zenodo.3905481)
@@ -53,7 +53,7 @@ _ZNF672_
    - Pricess Margaret Living Biobank (Trametinib/Gemcitabine, https://www.livingbiobank.ca/)
  * Patient cohorts
    - PCSI (resected cases, https://doi.org/10.18129/B9.bioc.MetaGxPancreas)
-   - COMPASS (advanced, prospective cohort)
+   - COMPASS (advanced, a prospective cohort)
 
 ## Results
  * https://bit.ly/3exQIqf

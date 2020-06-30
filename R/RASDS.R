@@ -134,6 +134,33 @@ calcSScore <- function(dat, exclude = c())
 
     return(mean(dat[upGenesIdx]) - mean(dat[downGenesIdx])) 
 }
+#'
+#' Calculate L- and S-scores
+#'
+#' @param mat \code{matrix} A expression profile in rawTPM values
+#' @param exclude \code{vector} A list of genes that are excluded
+#'
+#' @return L- and S-score
+#'
+#' @examples
+#' results <- calcScores(data, c("CXCL8"))
+#' 
+#' @export
+#'
+calcScores <- function(data, exclude = c()) {
+    results <- c()
+    for(idx in c(1:ncol(data))) {
+        dat <- as.vector(data[,idx])
+        names(dat) <- rownames(data)
+        lscore <- calcLScore(dat, exclude)
+        sscore <- calcSScore(dat, exclude)
+        res <- c(colnames(data)[idx], lscore, sscore)
+        results <- rbind(results, res)
+    }
+    return(data.frame(sample = results[,1], 
+        lscore=as.numeric(results[,2]),
+        sscore=as.numeric(results[,3])))
+}
 #' Transform raw TPM to log10(TPM)
 #'
 #' @param mat \code{matrix} A expression profile in raw TPM values
@@ -159,3 +186,57 @@ transExp <- function(mat)
     # get relative values (log10(TPM) - mean(log10(TPM)))
     return(log10TPM - avgLog10TPM)
 }
+#' Survival Analysis (CoxPH w. Kaplan-Meier plot)
+#'
+#' @param data \code{matrix} Should have time and status columns
+#' @param label \code{string} The name of the dataset
+#' @param scoreName \code{string} The name of the score
+#'
+#' @return ggplot object
+#'
+#' @examples
+#' survivalAnalysis(data, "Cohort A", "S-Score")
+#'
+#' @export
+#' @importFrom survival survminer
+survivalAnalysis <- function(data, label, score) {
+    if(score == "S-Score") {
+        data$median <- "high"
+        data$median[which(data$sscore <= median(data$sscore))] <- "low"
+        data$median <- as.factor(data$median)
+    } else if (score == "L-Score") {
+        data$median <- "high"
+        data$median[which(data$lscore <= median(data$lscore))] <- "low"
+        data$median <- as.factor(data$median)
+    } else {
+        stop("Please provide either one: S-Score or L-Score")
+    }
+    
+    cox.fit      <- coxph(Surv(time, status) ~ median, data = data)
+    p.value      <- format(round(coef(summary(cox.fit))[,5], 4), nsmall=4)
+    hazard.ratio <- format(round(coef(summary(cox.fit))[2], 4), nsmall=4)
+    lower.hr     <- format(round(exp(confint(cox.fit))[,1], 2), nsmall=2)
+    upper.hr     <- format(round(exp(confint(cox.fit))[,2], 2), nsmall=2)
+    fit          <- survfit(Surv(time, status) ~ median, data=data)
+    ggsurv       <- ggsurvplot(fit, data=data, conf.int=FALSE, pval=FALSE, risk.table = TRUE,
+                    legend.labs=c("High", "Low"), legend.title="Median(S-Score)",
+                    surv.median.line = "v", palette=c("blue","red"), xlab="Days")
+    ggsurv$plot  <- ggsurv$plot+ggplot2::annotate("text",
+                    x = 0, y = 0, size = 5, vjust = 0, hjust=0,
+                    label = paste(paste0(label, ", N=", nrow(data)), "\nCoxPH\n  P=", p.value,
+                    "\n  HR=",hazard.ratio, "\n  95CI=",lower.hr, "-", upper.hr, sep=""))
+    ggsurv
+}
+#'
+scatterPlot <- function(data, label, pos="topleft")
+{ 
+    corCoef <- round(cor(data$lscore, data$sscore, 
+        method="spearman", use="complete.obs"), 4)
+    plot(data$lscore, data$sscore,
+        pch=20, xlab="L-score", ylab="S-score",
+        main=paste0(label, ", N=", nrow(data)))
+    abline(lm(sscore ~ lscore, data=data), col="red")
+    legend(pos, legend=paste0("Spearman rho= ", corCoef), bty="n")
+}
+
+
