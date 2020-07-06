@@ -219,7 +219,8 @@ survivalAnalysis <- function(data, label, score) {
     upper.hr     <- format(round(exp(confint(cox.fit))[,2], 2), nsmall=2)
     fit          <- survfit(Surv(time, status) ~ median, data=data)
     ggsurv       <- ggsurvplot(fit, data=data, conf.int=FALSE, pval=FALSE, risk.table = TRUE,
-                    legend.labs=c("High", "Low"), legend.title="Median(S-Score)",
+                    legend.labs=c("High", "Low"), 
+                    legend.title=paste0("Median(", score, ")"),
                     surv.median.line = "v", palette=c("blue","red"), xlab="Days")
     ggsurv$plot  <- ggsurv$plot+ggplot2::annotate("text",
                     x = 0, y = 0, size = 5, vjust = 0, hjust=0,
