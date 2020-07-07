@@ -234,7 +234,7 @@ scatterPlot <- function(data, label, pos="topleft")
     corCoef <- round(cor(data$lscore, data$sscore, 
         method="spearman", use="complete.obs"), 4)
     plot(data$lscore, data$sscore,
-        pch=20, xlab="L-score", ylab="S-score",
+        pch=20, xlab="L-Score", ylab="S-Score",
         main=paste0(label, ", N=", nrow(data)))
     abline(lm(sscore ~ lscore, data=data), col="red")
     legend(pos, legend=paste0("Spearman rho= ", corCoef), bty="n")

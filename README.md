@@ -45,10 +45,6 @@ _SMAD9_, _STARD7_, _SUGP1_, _TBC1D24_, _TMEFF1_, _TTC28_, _ZNF292_, _ZNF441_, _Z
 _ZNF672_
 
 ## Datasets
- * Celllines (https://ORCESTRA.ca)
-   - CCLE (https://doi.org/10.5281/zenodo.3905462)
-   - CTRPv2 (https://doi.org/10.5281/zenodo.3905470)
-   - GDSC2 (https://doi.org/10.5281/zenodo.3905481)
  * Organoids
    - Pricess Margaret Living Biobank (Trametinib/Gemcitabine, https://www.livingbiobank.ca/)
  * Patient cohorts
